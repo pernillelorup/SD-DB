@@ -10,6 +10,9 @@ Group members:
 
 ___
 
+###NOTICE:
+
+We have solved this assignment by the use of terminal command lines for mongoDB with no code-files attached. You can find the used datasets in [this](datasets) folder.
 
 ###Exercise: Sharding in MongoDB
 **What is sharding in mongoDB?**  
