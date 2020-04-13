@@ -10,11 +10,11 @@ Group members:
 
 ___
 
-###NOTICE:
+### NOTICE:
 
 We have solved this assignment by the use of terminal command lines for mongoDB with no code-files attached. You can find the used datasets in [this](datasets) folder.
 
-###Exercise: Sharding in MongoDB
+### Exercise: Sharding in MongoDB
 **What is sharding in mongoDB?**  
 Sharding is a method for distributing data across multiple machines. MongoDB uses sharding to support deployments with very large data sets and high throughput operations.
 
@@ -35,7 +35,7 @@ We can see the mongos query router acting as an interface between client applica
 ___
 
 
-###Exercise: MapReduce with mongoDB (warmup)
+### Exercise: MapReduce with mongoDB (warmup)
 As a first exercise you are required to load reddit data from the link mentioned in 2). With help of map and reduce you need to find top 10 “lang” (language) of the documents in reddit.  
 
 We loaded the dataset 'countries-big.json' from the provided link. And ran the following command in the terminal from the folder in which we stored the data.
@@ -94,7 +94,7 @@ db.countries.report.aggregate([{$sort: {value: -1}}])
 ```
 ___
 
-###Exercise: MapReduce with mongoDB (hashtag query) (5 points)
+### Exercise: MapReduce with mongoDB (hashtag query) (5 points)
 For this task you need to download twitter dataset from the link mentioned in 2). This time you have to answer query “what are the top 10 hashtags used in the given tweets”. To answer this you need to use MapReduce. You can look at the scheme of the collection using db.collection.findOne(). It will print one record with scheme information. Also you can use function like this.hasOwnProperty(‘field_name’) to check if a field exist in the record. (if the field does not exist you will get error.   
 
 
