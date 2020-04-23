@@ -89,39 +89,43 @@ RETURN p1, p2
 ```
 
 ### 13. Tom Hanks hasn’t HELPED Gary Sinise in a research. Remove this property from the relation.
-```cql
-// this property doesn't exist
 
-// add it first by doing this:
-    		
+_this property doesn't exist_
+
+##### add it first by doing this:
+```cql		
 MATCH (p1:Person)
 WHERE p1.name = 'Tom Hanks'
 MATCH (p2:Person)
 WHERE p2.name = 'Gary Sinise'
 CREATE (p1)-[:HELPED]->(p2)
+```
 
-// then remove: 
-    		
+##### then remove: 
+```cql    		
 MATCH (p1:Person)-[rel:HELPED]->(p2:Person)
 WHERE p1.name = 'Tom Hanks'
 AND p2.name = 'Gary Sinise'
 REMOVE rel.research
+```
 
-// check if it has been removed
+##### check if it has been removed
 
+```cql
 MATCH (p:Person)
 WHERE p.name = 'Tom Hanks'
 RETURN p
-
 ```
 
 ### 14. Delete the whole person-to-person relationship HELPED from the graph.
 ```cql
 MATCH (:Person)-[rel:HELPED]-(:Person)
 DELETE rel
+```
 
-// confirm deletion of above:
+##### confirm deletion of above:
 
+```cql
 MATCH (:Person)-[rel:HELPED]-(:Person)
 RETURN rel
 
