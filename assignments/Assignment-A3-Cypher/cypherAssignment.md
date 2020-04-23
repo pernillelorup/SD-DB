@@ -117,6 +117,6 @@ MATCH (:Person)-[rel:HELPED]-(:Person)
 DELETE rel
 
 	// confirm deletion of above:
-        	MATCH (:Person)-[rel:HELPED]-(:Person)
-        	RETURN rel
+        MATCH (:Person)-[rel:HELPED]-(:Person)
+        RETURN rel
 ```
