@@ -1,4 +1,8 @@
 # Assignment A3 - Cypher
+#### Group members:
+- Adam Lass
+- Rasmus Helsgaun
+- Pernille Lørup 
  
 ### Before beginning - check for data:
 
