@@ -92,23 +92,27 @@ RETURN p1, p2
 ```cql
 // this property doesn't exist
 
-    // add it first by doing this:
-    		MATCH (p1:Person)
-    		WHERE p1.name = 'Tom Hanks'
-    		MATCH (p2:Person)
-    		WHERE p2.name = 'Gary Sinise'
-    		CREATE (p1)-[:HELPED]->(p2)
+// add it first by doing this:
+    		
+MATCH (p1:Person)
+WHERE p1.name = 'Tom Hanks'
+MATCH (p2:Person)
+WHERE p2.name = 'Gary Sinise'
+CREATE (p1)-[:HELPED]->(p2)
 
-  	// then remove: 
-    		MATCH (p1:Person)-[rel:HELPED]->(p2:Person)
-    		WHERE p1.name = 'Tom Hanks'
-    		AND p2.name = 'Gary Sinise'
-    		REMOVE rel.research
+// then remove: 
+    		
+MATCH (p1:Person)-[rel:HELPED]->(p2:Person)
+WHERE p1.name = 'Tom Hanks'
+AND p2.name = 'Gary Sinise'
+REMOVE rel.research
 
-    // check if it has been removed
-    		MATCH (p:Person)
-    		WHERE p.name = 'Tom Hanks'
-    		RETURN p
+// check if it has been removed
+
+MATCH (p:Person)
+WHERE p.name = 'Tom Hanks'
+RETURN p
+
 ```
 
 ### 14. Delete the whole person-to-person relationship HELPED from the graph.
@@ -116,7 +120,9 @@ RETURN p1, p2
 MATCH (:Person)-[rel:HELPED]-(:Person)
 DELETE rel
 
-	// confirm deletion of above:
-        MATCH (:Person)-[rel:HELPED]-(:Person)
-        RETURN rel
+// confirm deletion of above:
+
+MATCH (:Person)-[rel:HELPED]-(:Person)
+RETURN rel
+
 ```
