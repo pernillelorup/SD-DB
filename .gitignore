@@ -2,8 +2,6 @@
 # Created by https://www.gitignore.io/api/java,redis,linux,macos,windows,database
 # Edit at https://www.gitignore.io/?templates=java,redis,linux,macos,windows,database
 
-node_modules
-
 
 ### Database ###
 *.accdb
