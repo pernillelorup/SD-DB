@@ -19,7 +19,7 @@ var
 
   // Redis client
   redisClient = redis.createClient(6379);
-
+//hej
 /**
  * A helper function that splits up the comma-seperated list of roles and
  * converts it to an array. If no valid roles exist, return an empty array.
