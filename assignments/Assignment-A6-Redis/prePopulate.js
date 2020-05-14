@@ -5,15 +5,18 @@
  * courses, books, articles, and the like. Contact us if you are in doubt.
  * We make no guarantees that this code is fit for any purpose.
  * Visit http://www.pragmaticprogrammer.com/titles/pwrdata for more book information.
- ***/
-var // The TSV file containing the data for our exercise
-  tsvFilename = "group_membership.tsv",
+***/
+var
+  // The TSV file containing the data for our exercise
+  tsvFilename = 'group_membership.tsv',
   // Track how many file lines we've processed
   processedLines = 0,
+
   // Import libraries
-  csv = require("csv-parser"),
-  redis = require("redis"),
-  fs = require("fs"),
+  csv = require('csv-parser'),
+  redis = require('redis'),
+  fs = require('fs'),
+
   // Redis client
   redisClient = redis.createClient(6379);
 
@@ -26,13 +29,13 @@ function buildRoles(string) {
   if (string === undefined) {
     return [];
   } else {
-    var roles = string.split(",");
-    if (roles.length === 1 && roles[0] === "") {
+    var roles = string.split(',');
+    if (roles.length === 1 && roles[0] === '') {
       roles = [];
     }
     return roles;
   }
-}
+};
 
 /**
  * Utility function that increments the total number
@@ -50,36 +53,37 @@ function trackLineCount() {
  */
 function populateRedis() {
   var stream = csv({
-    separator: "\t",
-    newline: "\n",
+    separator: '\t',
+    newline: '\n'
   });
 
   fs.createReadStream(tsvFilename)
     .pipe(stream)
-    .on("data", function (data) {
-      var artist = data["member"],
-        band = data["group"],
-        roles = buildRoles(data["role"]);
+    .on('data', function(data) {
+      var
+        artist = data['member'],
+        band = data['group'],
+        roles = buildRoles(data['role']);
 
-      if (artist === "" || band === "") {
+      if (artist === '' || band === '') {
         trackLineCount();
         return true;
       }
 
-      redisClient.sadd("band:" + band, artist);
+      redisClient.sadd('band:' + band, artist);
 
       if (roles.length > 0) {
-        roles.forEach(function (role) {
+        roles.forEach(function(role) {
           redisClient.sadd(`artist:${band}:${artist}`, role);
         });
       }
 
       trackLineCount();
     })
-    .on("end", function (totalLines) {
+    .on('end', function(totalLines) {
       console.log(`Total lines processed: ${processedLines}`);
       redisClient.quit();
     });
-}
+};
 
 populateRedis();
